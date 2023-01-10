@@ -1,18 +1,13 @@
 <header>
-    <nav>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link {{Route::currentRouteName() === 'home' ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{Route::currentRouteName() === 'guest.comics.index' ? 'active' : '' }}" href="{{ ('guest.comics.index') }}">Products</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{Route::currentRouteName() === 'admin.comics.index' ? 'active' : '' }}" href="{{ route('guest.comics.index') }}">Admin</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('comics.index') }}">Admin Comics</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="my-4">
+        <div class="container d-flex justify-content-center">
+
+            <nav class="d-flex align-items-center gap-4 text-uppercase">
+                <a href="{{Route('home')}}" class="{{Route::currentRouteName() === 'home' ? 'active' : ''}}">Home</a>
+                <a href="{{Route('comics.index')}}" class="{{Route::currentRouteName() === 'comics.index' ? 'active' : ''}}">Comics</a>
+                <a href="{{Route('news')}}" class="{{Route::currentRouteName() === 'news' ? 'active' : ''}}">News</a>
+            </nav>
+
+        </div>
+    </div>
 </header>

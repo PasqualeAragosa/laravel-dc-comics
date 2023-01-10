@@ -1,24 +1,68 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-<h1>All Comics Here</h1>
+<!-- jumbotron -->
+<div class="jumbotron position-relative">
+    <div class="text-uppercase p-2">Current series</div>
+</div>
 
-<div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-4">
-        @forelse($comics as $comic)
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="{{ $comic->thumb }}" class="card-img-top" alt="{{ $comic->title image}}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $comic->title }}</h5>
-                    <ul>
-                        <li class="card-text">{{ $comic->price }}</li>
-                    </ul>
-                    <a href="{{ route('guest.comics.show'), $comic->id }}" class="btn btn-primary">Go to Details</a>
+<!-- current series -->
+<div class="current_series pt-5 pb-4">
+    <div class="container">
+        <div class="row row-cols-6 g-3">
+            @foreach($comics as $comic)
+            <div class="col">
+                <a href="{{Route('comics.show', $comic->id)}}">
+                    <div class="card border-0 rounded-0 text-uppercase">
+                        <img src="{{ $comic['thumb'] }}" alt="{{ $comic['series'] }}" class="my-2">
+                        {{ $comic['series'] }}
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+<!-- buy comics -->
+<div class="buy_comics py-5">
+    <div class="container">
+        <div class="row row-cols-5">
+            <div class="col">
+                <div class="text-uppercase">
+                    <img src="{{ Vite::asset('resources/img/buy-comics-digital-comics.png') }}" alt="">
+                    Digital Comics
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="text-uppercase">
+                    <img src="{{ Vite::asset('resources/img/buy-comics-merchandise.png') }}" alt="">
+                    DC Merchandise
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="text-uppercase">
+                    <img src="{{ Vite::asset('resources/img/buy-comics-subscriptions.png') }}" alt="">
+                    Subscription
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="text-uppercase">
+                    <img src="{{ Vite::asset('resources/img/buy-comics-shop-locator.png') }}" alt="">
+                    Comic Shop Locator
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="text-uppercase">
+                    <img src="{{ Vite::asset('resources/img/buy-dc-power-visa.svg') }}" alt="">
+                    DC Power Visa
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

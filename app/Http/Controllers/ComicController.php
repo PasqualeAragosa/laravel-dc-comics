@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Comic;
 use App\Http\Requests\StoreComicRequest;
 use App\Http\Requests\UpdateComicRequest;
-use App\Models\Comic;
 
 class ComicController extends Controller
 {
@@ -17,6 +16,7 @@ class ComicController extends Controller
     public function index()
     {
         $comics = Comic::all();
+        // dd($comics);
         return view('admin.comics.index', compact('comics'));
     }
 
@@ -38,7 +38,22 @@ class ComicController extends Controller
      */
     public function store(StoreComicRequest $request)
     {
-        dd($request->all());
+        // dd($request->all());
+
+        $validated = $request->validated();
+        dd($validated);
+
+        $comic = new Comic();
+        $comic->title = $validated['title'];
+        $comic->description = $validated['description'];
+        $comic->thumb = $validated['thumb'];
+        $comic->price = $validated['price'];
+        $comic->series = $validated['series'];
+        $comic->sale_date = $validated['sale_date'];
+        $comic->type = $validated['type'];
+        $comic->save();
+
+        return to_route('comics.index');
     }
 
     /**
@@ -49,6 +64,7 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
+        // dd($comic);
         return view('admin.comics.show', compact('comic'));
     }
 
@@ -60,7 +76,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('admin.comics.edit', compact('comic'));
     }
 
     /**
@@ -72,7 +88,21 @@ class ComicController extends Controller
      */
     public function update(UpdateComicRequest $request, Comic $comic)
     {
-        //
+        // dd($request->all());
+
+        $validated = $request->validated();
+        // dd($validated);
+
+        $comic->title = $validated['title'];
+        $comic->description = $validated['description'];
+        $comic->thumb = $validated['thumb'];
+        $comic->price = $validated['price'];
+        $comic->series = $validated['series'];
+        $comic->sale_date = $validated['sale_date'];
+        $comic->type = $validated['type'];
+        $comic->save();
+
+        return to_route('comics.index');
     }
 
     /**
@@ -83,6 +113,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->Route('comics.index');
     }
 }

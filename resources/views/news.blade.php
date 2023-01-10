@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Welcome to DC Comics</h1>
+    <h1>News to DC Comics</h1>
     <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ullam, sapiente culpa quisquam voluptates qui placeat corporis autem aliquid dolor dignissimos eos voluptatibus quam debitis fuga error corrupti eum velit.
         Vitae exercitationem ex harum dolorem repellendus. Tempora id corporis sit quos ipsam ipsa recusandae, quis minima mollitia sequi error fugiat autem ex aliquam perspiciatis voluptate aut aliquid exercitationem nihil. Ducimus!
