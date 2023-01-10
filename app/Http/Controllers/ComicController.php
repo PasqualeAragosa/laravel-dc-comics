@@ -41,7 +41,8 @@ class ComicController extends Controller
         // dd($request->all());
 
         $validated = $request->validated();
-        dd($validated);
+
+        //dd($validated);
 
         $comic = new Comic();
         $comic->title = $validated['title'];
